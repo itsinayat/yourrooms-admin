@@ -14,7 +14,7 @@ if(!isset($_SESSION["token"])){
 <body>
 <div class="card">
 <div class="card-header card-header-primary">
-    <h4 class="card-title ">ALL BOOKINGS</h4>
+    <h4 class="card-title ">ALL USERS</h4>
 </div>
 
 <div class="card-body">
@@ -24,56 +24,58 @@ if(!isset($_SESSION["token"])){
 						<th>ID
                         </th>
                         <th>
-                          BOOKING_ID
+                          FIRST NAME
                         </th>
                         <th>
-                          HOTEL_ID
+                          LAST NAME
                         </th>
 						<th>
-                          ROOM_ID
+                          EMAIL
                         </th>
 						<th>
-                          NO_OF_GUESTS
+                          MOBILE
                         </th>
 						<th>
-                          TXN
+                          DOB
                         </th>
 						<th>
-                          BKNG_STATUS
+                          GENDER
+                        </th>
+						
+                        <th>
+                          REFERRAL CODE
                         </th>
 						<th>
-                          PYMT_STATUS
+                          REFERRED_BY
                         </th>
                         <th>
-                          CHKIN_DATE/STATUS
+                          IS VERIFIED
                         </th>
-                        <th>
-                          CHKOUT_DATE/STATUS
+						
+						 <th>
+                          IS DELETED
                         </th>
 						 <th>
-                          USER
-                        </th>
-						 <th>
-                          BKNG_PRICE(Rs)
-                        </th>
-						 <th>
-                          COUPON
+                          CREATED ON
                         </th> <th>
-                          COUPON_DSCNT(Rs)
+                          UPDATED ON
                         </th>
 						 <th>
-                          DISCNT(Rs)
+                          USERNAME
                         </th>
+                        
+						<th>
+                          IS ENABLED
                         </th>
 						<th>
-                          GST
+                          ROLE
                         </th>
                       </thead>
                       <tbody>
 					  
 <?php 
 include 'provider.php';
-$get_data = callAPI('GET', 'http://localhost:8080/admin/getAllBookings',false,$_SESSION["token"]);
+$get_data = callAPI('GET', 'http://localhost:8080/admin/getAllUsers',false,$_SESSION["token"]);
 $response = json_decode($get_data);
 
 $data = $response->{'data'}[0];
@@ -83,66 +85,65 @@ foreach ($data as $item) {
                         <tr>
                           <td>
                             <?php echo $item->{'id'} ?><br>
-							<a href="dashboard?tab=updateBooking&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-danger">update</a>
+							<a href="dashboard?tab=user&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-danger">update</a>
                           </td>
 						  <td>
-                             <?php echo $item->{'bookingId'} ?>
+                             <?php echo $item->{'firstName'} ?>
                           </td>
 						  <td>
-                             <?php echo $item->{'hotelId'} ?>
+                             <?php echo $item->{'lastName'} ?>
                           </td>
 						  <td>
-                             <?php echo $item->{'rooms'} ?>
+                             <?php echo $item->{'email'} ?>
                           </td>
 						  <td>
-                             <?php echo $item->{'noOfGuests'} ?>
-                          </td>
-						   <td>
-						  <?php if($item->{'transaction'} != null){ ?>
-                             <a href="dashboard?tab=view_trxn&id=<?php echo $item->{'transaction'}->{'id'} ?>">View</a>
-							<?php }else{
-								echo "NA";
-							} ?>
-						  </td>
-						  <td>
-                             <?php echo $item->{'bookingStatus'} ?>
+                             <?php echo $item->{'mobile'} ?>
                           </td>
 						  <td>
-                             <?php echo $item->{'paymentStatus'} ?>
+                             <?php echo $item->{'dob'} ?>
                           </td>
 						  <td>
-                             <?php echo substr($item->{'checkinDate'},0,10).'/'.$item->{'checkinStatus'} ?>
+                             <?php echo $item->{'gender'} ?>
                           </td>
 						  <td>
-                             <?php echo substr($item->{'checkoutDate'},0,10). '/'. $item->{'checkoutStatus'} ?>
-                          </td>
-						  
-						  <td>
-						  <?php if($item->{'user'}-> {'id'} != null){ ?>
-                             <a href="dashboard?tab=user&id=<?php echo $item->{'user'}-> {'id'} ?>">View</a>
-							<?php }else{
-								echo "NA";
-							} ?>
-                          
-                          </td>
-						  <td>
-                            <?php echo $item->{'booking_price'} ?>
+                             <?php echo $item->{'referral_code'} ?>
                           </td>
 						  <td>
                              <?php
-							echo $item->{'discount_coupon'}; 
+if(isset($item->{'referred_by'})){
+?>
+<a href="dashboard?tab=user&id=<?php echo $item->{'referred_by'} ?>">View</a>
+<?php
+}else{
+	echo "NA";
+}
 							 
 							 ?>
                           </td>
 						  <td>
-                              <?php echo $item->{'coupon_discount'} ?>
+                             <?php echo $item->{'is_verified'}?'true':'false' ?>
+                          </td>
+						
+						  <td>
+                             <?php echo $item->{'del_ind'}?'true':'false' ?>
                           </td>
 						  <td>
-                           <?php echo $item->{'discount_price'} ?>
+                             <?php echo $item->{'create_dt'} ?>
                           </td>
 						  <td>
-                              <?php echo $item->{'gst'} ?>
+                             <?php echo $item->{'update_dt'} ?>
                           </td>
+						  <td>
+                             <?php echo $item->{'username'} ?>
+                          </td>
+						  <td>
+                             <?php echo $item->{'enabled'}?'true':'false' ?>
+                          </td>
+						  <td>
+                             <?php echo $item->{'role'}->{'name'} ?>
+                          </td>
+						  
+						  
 						  
                         </tr>
                  <?php }?>

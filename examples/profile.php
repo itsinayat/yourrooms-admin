@@ -1,4 +1,7 @@
-      <!-- End Navbar -->
+<?php 
+if(!isset($_SESSION["token"])){
+	header('Location: login');
+} ?>
 	  <html>
 <head>
 </head> 

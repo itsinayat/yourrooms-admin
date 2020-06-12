@@ -1,3 +1,7 @@
+<?php 
+if(!isset($_SESSION["token"])){
+	header('Location: login');
+} ?>
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -48,7 +52,7 @@
 					  
 <?php 
 include 'provider.php';
-$get_data = callAPI('GET', 'http://localhost:8080/admin/viewTransactionById/'.$_GET['id'],false,"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcxMTgxMjMyNiwiZXhwIjoxNTkyMzE2NjEyfQ.p_XzzJlS9z6rOlipRnx7AO8gHPz8V0KofYT8o6FbEyQEBWLJcL_qyDsTfz5tnixbA5PwabGGIi7UsSAw6b1AXg");
+$get_data = callAPI('GET', 'http://localhost:8080/admin/viewTransactionById/'.$_GET['id'],false,$_SESSION["token"]);
 $response = json_decode($get_data);
 $item = $response->{'data'}[0];
 ?>

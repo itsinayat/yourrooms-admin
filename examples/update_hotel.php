@@ -1,6 +1,10 @@
 <?php 
+if(!isset($_SESSION["token"])){
+	header('Location: login');
+} ?>
+<?php 
 include 'provider.php';
-$get_data = callAPI('GET', 'http://localhost:8080/admin/findHotel/'.$_GET['id'],false,"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcxMTgxMjMyNiwiZXhwIjoxNTkyMzE2NjEyfQ.p_XzzJlS9z6rOlipRnx7AO8gHPz8V0KofYT8o6FbEyQEBWLJcL_qyDsTfz5tnixbA5PwabGGIi7UsSAw6b1AXg");
+$get_data = callAPI('GET', 'http://localhost:8080/admin/findHotel/'.$_GET['id'],false,$_SESSION["token"]);
 $response = json_decode($get_data);
 $item = $response->{'data'}[0];
 ?>
@@ -187,7 +191,7 @@ $item = $response->{'data'}[0];
 
 <div class="modal fade" id="addStaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <?php 
-$usersobj = callAPI('GET', 'http://localhost:8080/admin/getAllUsers',false,"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcxMTgxMjMyNiwiZXhwIjoxNTkyMzE2NjEyfQ.p_XzzJlS9z6rOlipRnx7AO8gHPz8V0KofYT8o6FbEyQEBWLJcL_qyDsTfz5tnixbA5PwabGGIi7UsSAw6b1AXg");
+$usersobj = callAPI('GET', 'http://localhost:8080/admin/getAllUsers',false,$_SESSION["token"]);
 $users = json_decode($usersobj);
 $userslist = $users->{'data'}[0];
 ?>
@@ -198,7 +202,6 @@ $userslist = $users->{'data'}[0];
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">SELECT USERNAME TO ADD FROM BELOW:</label>
             <select name ='users' class="form-control">
-			<option>Select</option>
 			<?php foreach ($userslist as $u) { ?>
 			<option value="<?php echo $u->{'id'} ?>"> <?php echo $u->{'username'} ?></option>
 			<?php } ?>
@@ -215,7 +218,7 @@ $userslist = $users->{'data'}[0];
 
 <div class="modal fade" id="addImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <?php 
-$usersobj = callAPI('GET', 'http://localhost:8080/admin/getAllUsers',false,"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcxMTgxMjMyNiwiZXhwIjoxNTkyMzE2NjEyfQ.p_XzzJlS9z6rOlipRnx7AO8gHPz8V0KofYT8o6FbEyQEBWLJcL_qyDsTfz5tnixbA5PwabGGIi7UsSAw6b1AXg");
+$usersobj = callAPI('GET', 'http://localhost:8080/admin/getAllUsers',false,$_SESSION["token"]);
 $users = json_decode($usersobj);
 $userslist = $users->{'data'}[0];
 ?>

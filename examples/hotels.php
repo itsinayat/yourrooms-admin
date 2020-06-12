@@ -1,3 +1,7 @@
+<?php 
+if(!isset($_SESSION["token"])){
+	header('Location: login');
+} ?>
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -14,6 +18,8 @@
 </div>
 
 <div class="card-body">
+ <button type="button" data-toggle='modal' data-target='#addHotel' class="btn btn-danger pull-left">ADD NEW HOTEL</button>
+          
     <div class="table-responsive">
         <table id="example" class="table .table-bordered display" style="width:100%">
             <thead class="text-primary">
@@ -56,19 +62,14 @@
 						<th>
                           CREATED ON?
                         </th>
-						 <th>
-                          STAFFS
-                        </th>
-                        </th>
-						<th>
-                          HOTEL IMAGES
-                        </th>
+						
+						
                       </thead>
                       <tbody>
 					  
 <?php 
 include 'provider.php';
-$get_data = callAPI('GET', 'http://localhost:8080/hotel/getAll-hotels',false,"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcxMTgxMjMyNiwiZXhwIjoxNTkyMzE2NjEyfQ.p_XzzJlS9z6rOlipRnx7AO8gHPz8V0KofYT8o6FbEyQEBWLJcL_qyDsTfz5tnixbA5PwabGGIi7UsSAw6b1AXg");
+$get_data = callAPI('GET', 'http://localhost:8080/hotel/getAll-hotels',false,$_SESSION["token"]);
 $response = json_decode($get_data);
 
 $data = $response->{'data'}[0];
@@ -78,7 +79,7 @@ foreach ($data as $item) {
                         <tr>
                           <td>
                             <?php echo $item->{'id'} ?><br>
-							<a href="dashboard?tab=update_hotel&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-danger">update</a>
+							<a href="dashboard?tab=update_hotel&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-info">update/addImage/Staff</a>
                           </td>
 						  <td>
                              <?php echo $item->{'hotelName'} ?>
@@ -121,31 +122,14 @@ foreach ($data as $item) {
 						  <td>
                            <?php echo $item->{'create_dt'} ?>
                           </td>
-						  <td>
-                              <?php
-								$ST =$item->{'staffs'};
-								foreach ($ST as $s) {
-									echo "<a href ='dashboard.php?tab=user&id=".$s->{'id'}."'>"."".$s->{'id'}."</a>&nbsp; &nbsp; &nbsp;";
-								}	  
-							  ?>
-                          </td>
-						  <td>
-								
-                              <?php
-								$IM =$item->{'hotelImages'};
-								foreach ($IM as $i) {
-									echo "<a href ='dashboard.php?tab=image&id=".$i->{'id'}."'>".$i->{'id'}."</a>&nbsp; &nbsp; &nbsp;";
-								}	  
-							  ?>
-                         
-                          </td>
-						  
+						 
                         </tr>
                  <?php }?>
                       </tbody>
                     </table>
+					
                   </div>
-                </div>
+				        </div>
               </div>
 			  </div>
             </div>
@@ -163,6 +147,75 @@ $(document).ready(function() {
     } );
 } );
 </script>
+<!-- Modal -->
+<div id="addHotel" class="modal fade " role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">ADD NEW HOTEL</h4>
+      </div>
+      <div class="modal-body">
+         <form action="updateHotelService.php" method="POST">
+    <div class="form-group">
+      <label for="code">NAME:</label>
+      <input required type="text" class="form-control"  placeholder="Enter Name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="value">ADDRESS:</label>
+      <input required type="text" class="form-control"  placeholder="Enter Address" name="address">
+    </div>
+	<div class="form-group">
+      <label for="expiry">CITY:</label>
+      <input required type="text" class="form-control"  placeholder="Enter City" name="city">
+    </div>
+	
+	<div class="form-group">
+      <label for="expiry">PINCODE:</label>
+      <input required type="text" class="form-control"  placeholder="true/false" name="pincode">
+    </div>
+	<div class="form-group">
+      <label for="expiry">LATTITUDE:</label>
+      <input required type="text" class="form-control"  placeholder="true/false" name="lattitude">
+    </div>
+	<div class="form-group">
+      <label for="expiry">LONGITUDE:</label>
+      <input required type="text" class="form-control"  placeholder="true/false" name="longitude">
+    </div>
+	<div class="form-group">
+      <label for="expiry">PAY AT HOTEL(true/false):</label>
+      <input required type="text" class="form-control"  placeholder="true/false" name="payathotel">
+    </div>
+	<div class="form-group">
+      <label for="expiry">FREE BREAKFAST(true/false):</label>
+      <input required type="text" class="form-control"  placeholder="true/false" name="freeBreakFast">
+    </div>
+	<div class="form-group">
+      <label for="expiry">COUPLE FRIENDLY(true/false):</label>
+      <input required type="text" class="form-control"  placeholder="true/false" name="coupleFriendly">
+    </div>
+	<div class="form-group">
+      <label for="expiry">FREE WIFI(true/false):</label>
+      <input required type="text" class="form-control" placeholder="true/false" name="freeWifi">
+    </div>
+	<div class="form-group">
+      <label for="expiry">AC AVAILABLE?(true/false):</label>
+      <input required type="text" class="form-control"  placeholder="true/false" name="ac">
+    </div>
+	<div class="form-group">
+      <label for="expiry">IS BLOCKED?(true/false):</label>
+      <input required type="text" class="form-control"  placeholder="true/false" name="isBlocked">
+    </div>
+    <button type="submit" class="btn btn-default btn-info">Submit</button>
+  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 </body>
 
 </html>

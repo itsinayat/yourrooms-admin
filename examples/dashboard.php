@@ -69,7 +69,7 @@ The above copyright notice and this permission notice shall be included in all c
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo"><a href="dashboard" class="simple-text logo-normal">
-          <button class="btn btn-lg btn-info">Yourrooms Admin</button>
+          <button class="btn btn-lg btn-primary">Yourrooms Admin</button>
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
@@ -83,22 +83,29 @@ The above copyright notice and this permission notice shall be included in all c
 		  <li id='bookings' class="nav-item ">
             <a class="nav-link" href="./dashboard?tab=bookings">
               <i class="material-icons">history</i>
-              <p>Show Bookings</p>
+              <p>Manage	 Bookings</p>
             </a>
           </li>
           <li id='hotels' class="nav-item ">
             <a class="nav-link" href="./dashboard?tab=hotels">
-              <i class="material-icons">person</i>
+              <i class="material-icons">business</i>
               <p>Manage Hotels</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+          <li id="coupons" class="nav-item ">
+            <a class="nav-link" href="./dashboard?tab=coupons">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Manage Coupons</p>
             </a>
           </li>
-          <li class="nav-item ">
+		  
+		   <li id="users" class="nav-item ">
+            <a class="nav-link" href="./dashboard?tab=users">
+              <i class="material-icons">account_box</i>
+              <p>Manage Users</p>
+            </a>
+          </li>
+        <!--  <li class="nav-item ">
             <a class="nav-link" href="./typography.html">
               <i class="material-icons">library_books</i>
               <p>Typography</p>
@@ -134,6 +141,7 @@ The above copyright notice and this permission notice shall be included in all c
               <p>Upgrade to PRO</p>
             </a>
           </li>
+		  -->
         </ul>
       </div>
     </div>
@@ -164,6 +172,20 @@ The above copyright notice and this permission notice shall be included in all c
 		else if($_GET['tab']=='update_hotel'){
 			include "update_hotel.php";
 		}
+		else if($_GET['tab']=='main'){
+			include "main.php";
+		}
+		else if($_GET['tab']=='coupons'){
+			include "coupons.php";
+		}
+		else if($_GET['tab']=='update_coupon'){
+			include "update_coupon.php";
+		}
+		else if($_GET['tab']=='updateBooking'){
+			include "updateBooking.php";
+		}
+		}else{
+			include "main.php";
 		}
 		
 		?>
@@ -234,6 +256,15 @@ navlink.className += " active";
 }
 if(tab=='hotels'){
 var navlink = document.getElementById("hotels");
+navlink.className += " active";
+}
+if(tab=='coupons'){
+var navlink = document.getElementById("coupons");
+navlink.className += " active";
+}
+
+if(tab=='users'){
+var navlink = document.getElementById("users");
 navlink.className += " active";
 }
  

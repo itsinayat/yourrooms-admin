@@ -1,6 +1,11 @@
+<?php 
+session_start();
+if(!isset($_SESSION["token"])){
+	header('Location: login');
+} ?>
 <?php
+
 include "provider.php";
-$id =  $_POST["hotelId"];
 $name =  $_POST["name"];
 $address =  $_POST["address"];
 $city =  $_POST["city"];
@@ -13,6 +18,9 @@ $coupleFriendly =  $_POST["coupleFriendly"];
 $freeWifi =  $_POST["freeWifi"];
 $ac =  $_POST["ac"];
 $isBlocked =  $_POST["isBlocked"];
+
+if(isset($_POST["hotelId"])){
+$id =  $_POST["hotelId"];
 $body = "{ \"hotelName\":\"".$name."\",
  \"address\":\"".$address."\",
  \"lattitude\":\"".$lattitude."\",
@@ -26,8 +34,27 @@ $body = "{ \"hotelName\":\"".$name."\",
  \"city\" :\"".$city."\",
  \"pincode\":\"".$pincode."\",
  \"ac\":".$ac." }";
-echo $body;
-$get_data = callAPI('POST', 'http://localhost:8080/admin/add-or-update-hotel',$body,"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbmF5YXQxIiwiY3JlYXRlZCI6MTU5MTcxMTgxMjMyNiwiZXhwIjoxNTkyMzE2NjEyfQ.p_XzzJlS9z6rOlipRnx7AO8gHPz8V0KofYT8o6FbEyQEBWLJcL_qyDsTfz5tnixbA5PwabGGIi7UsSAw6b1AXg");
-print_r($get_data);
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+}else{
+	$body = "{ \"hotelName\":\"".$name."\",
+ \"address\":\"".$address."\",
+ \"lattitude\":\"".$lattitude."\",
+ \"longitude\":\"".$longitude."\",
+ \"payAtHotel\":".$payathotel.",
+ \"freeBreakFast\":".$freeBreakFast.",
+  \"isBlocked\":".$isBlocked.",
+ \"coupleFriendly\":".$coupleFriendly.",
+ \"freeWifi\":".$freeWifi.",
+ \"city\" :\"".$city."\",
+ \"pincode\":\"".$pincode."\",
+ \"ac\":".$ac." }";
+}
+
+$get_data = callAPI('POST', 'http://localhost:8080/admin/add-or-update-hotel',$body,$_SESSION["token"]);
+
+$response = json_decode($get_data);
+if($response->{'message'} == "SUCCESS"){
+header('Location: ' . $_SERVER['HTTP_REFERER']);	
+}else{
+	print_r($get_data);
+}
 ?>

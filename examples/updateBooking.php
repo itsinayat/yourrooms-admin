@@ -46,7 +46,7 @@ $item = $response->{'data'}[0];
                       <div class="col-md-2">
                         <div class="fg">
                           <label class="label">PAYMENT STATUS</label>
-                          <input name="paymentStatus" value="<?php echo $item->{'paymentStatus'} ?>" type="text" class="form-control" disabled>
+                          <input id="ps" name="paymentStatus" value="<?php echo $item->{'paymentStatus'} ?>" type="text" class="form-control" disabled>
                         </div>
                       </div>
                   
@@ -65,8 +65,8 @@ $item = $response->{'data'}[0];
                       </div>
                
                       </div>
-					  <a href="cancelBooking.php?id=<?php echo $item->{'id'} ?>" class="btn  btn-danger pull-left">CANCEL BOOKING</a>
-					<a href="initiateRefund.php?id=<?php echo $item->{'id'} ?>" class="btn  btn-warning pull-left">INITIATE REFUND</a>
+					<a id="cancelbtn" href="cancelBookingService.php?id=<?php echo $item->{'id'} ?>" class="btn  btn-danger pull-left">CANCEL BOOKING</a>
+					<button  type="button" data-toggle='modal' data-target='#initRefund' id="refundbtn" class="btn  btn-warning pull-left">INITIATE REFUND</button>
                     <button type="submit" class="btn btn-primary pull-right">Update Booking</button>
                     <div class="clearfix"></div>
                   </form>
@@ -83,7 +83,47 @@ $item = $response->{'data'}[0];
       </div>
     </div>
   </div>
+ <script>
  
+var urlParams = new URLSearchParams(window.location.search);
+var from = urlParams.get('from');
+var x = document.getElementById("ps").value;
+if(x=="REFUNDED"){
+	document.getElementById("refundbtn").style.display = 'none';
+}
+if(from == 'refund'){
+document.getElementById("refundbtn").style.display = 'none';
+document.getElementById("cancelbtn").style.display = 'none';
+}
+
+ </script>
+ 
+ 
+<!-- Modal -->
+<div id="initRefund" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">INITIATE REFUND</h4>
+      </div>
+      <div class="modal-body">
+      <form action="initiateRefundService.php" method="POST">
+    <div class="form-group">
+      <label for="code">Enter Amount to refund:</label>
+      <input required type="number" class="form-control" id="code" placeholder="Enter Code" name="refundAmount">
+    </div>
+    <input name ="bookingId" value="<?php echo $item->{'id'} ?>" type="hidden" class="form-control" >
+    <button type="submit" class="btn btn-default btn-info">Submit</button>
+  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 </body>
 

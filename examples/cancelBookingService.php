@@ -7,16 +7,12 @@ if(!isset($_SESSION["token"])){
 include "provider.php";
 $id =  $_GET["id"];
 
-$body = "{ \"id\":".$id.",
- \"bookingStatus\":\"".$bookingStatus."\",
- \"checkinStatus\":\"".$checkinStatus."\",
- \"checkoutStatus\":\"".$checkoutStatus."\",
- \"paymentStatus\":\"".$paymentStatus."\"}";
+$body = "{ \"id\":".$id."}";
 
-$get_data = callAPI('POST', 'http://localhost:8080/hotel/update-booking',$body,$_SESSION["token"]);
+$get_data = callAPI('POST', 'http://localhost:8080/hotel/cancelBooking',$body,$_SESSION["token"]);
 
 $response = json_decode($get_data);
-if($response->{'message'} == "SUCCESS"){
+if($response->{'statusCode'} == "200"){
 header('Location: ' . $_SERVER['HTTP_REFERER']);	
 }else{
 	print_r($get_data);

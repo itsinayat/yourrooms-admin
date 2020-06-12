@@ -58,12 +58,13 @@ if(!isset($_SESSION["token"])){
                         </th>
 						 <th>
                           COUPON
-                        </th> <th>
+                        </th>
+						<th>
                           COUPON_DSCNT(Rs)
                         </th>
 						 <th>
                           DISCNT(Rs)
-                        </th>
+                       
                         </th>
 						<th>
                           GST
@@ -83,7 +84,7 @@ foreach ($data as $item) {
                         <tr>
                           <td>
                             <?php echo $item->{'id'} ?><br>
-							<a href="dashboard?tab=updateBooking&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-danger">update</a>
+							<a href="dashboard?tab=updateBooking&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary">update</a>
                           </td>
 						  <td>
                              <?php echo $item->{'bookingId'} ?>

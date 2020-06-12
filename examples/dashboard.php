@@ -190,6 +190,13 @@ The above copyright notice and this permission notice shall be included in all c
 		else if($_GET['tab']=='updateBooking'){
 			include "updateBooking.php";
 		}
+		
+		else if($_GET['tab']=='updateRoom'){
+			include "updateRoom.php";
+		}
+		else if($_GET['tab']=='addRooms'){
+			include "addRooms.php";
+		}
 		else if($_GET['tab']=='refund'){
 			include "refund.php";
 		}
@@ -271,6 +278,7 @@ if(tab=='coupons'){
 var navlink = document.getElementById("coupons");
 navlink.className += " active";
 }
+
 
 if(tab=='users'){
 var navlink = document.getElementById("users");

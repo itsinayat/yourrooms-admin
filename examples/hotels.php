@@ -79,7 +79,7 @@ foreach ($data as $item) {
                         <tr>
                           <td>
                             <?php echo $item->{'id'} ?><br>
-							<a href="dashboard?tab=update_hotel&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-info">update/addImage/Staff</a>
+							<a href="dashboard?tab=update_hotel&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary">update/addImage/Staff</a>
                           </td>
 						  <td>
                              <?php echo $item->{'hotelName'} ?>

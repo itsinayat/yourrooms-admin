@@ -3,20 +3,18 @@ session_start();
 if(!isset($_SESSION["token"])){
 	header('Location: login');
 } ?>
+
 <?php
 include "provider.php";
-$id =  $_GET["id"];
+$bookingId =     $_POST["bookingId"];
+$refundAmount =  $_POST["refundAmount"];
 
-$body = "{ \"id\":".$id.",
- \"bookingStatus\":\"".$bookingStatus."\",
- \"checkinStatus\":\"".$checkinStatus."\",
- \"checkoutStatus\":\"".$checkoutStatus."\",
- \"paymentStatus\":\"".$paymentStatus."\"}";
+$body = "{ \"bookingId\":".$bookingId.",\"refundAmount\":".$refundAmount."}";
 
-$get_data = callAPI('POST', 'http://localhost:8080/hotel/update-booking',$body,$_SESSION["token"]);
+$get_data = callAPI('POST', 'http://localhost:8080/payment/initiateRefund',$body,$_SESSION["token"]);
 
 $response = json_decode($get_data);
-if($response->{'message'} == "SUCCESS"){
+if($response->{'statusCode'} == "200"){
 header('Location: ' . $_SERVER['HTTP_REFERER']);	
 }else{
 	print_r($get_data);

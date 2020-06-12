@@ -14,78 +14,72 @@ if(!isset($_SESSION["token"])){
 <body>
 <div class="card">
 <div class="card-header card-header-primary">
-    <h4 class="card-title ">REFUNDS</h4>
+    <h4 class="card-title ">ALL REFUNDS</h4>
 </div>
 
 <div class="card-body">
     <div class="table-responsive">
         <table id="example" class="table .table-bordered display" style="width:100%">
             <thead class="text-primary">
-						 <th>
-                          ORDER_ID
+						<th>BookingId
                         </th>
                         <th>
-                          TOTAL_AMT
+                          RefundId
                         </th>
                         <th>
-                          PAID_AMT
+                          PaymentId
                         </th>
 						<th>
-                          DISCOUNT_TYPE
+                          Status
                         </th>
 						<th>
-                          PAYMENT_MODE
+                          Total Amount
+                        </th>
+						<th>
+                          Refund Amount
+                        </th>
+						<th>
+                          Created At
                         </th>
 						
-						
-						<th>
-                          PYMT_ID
-                        </th>
-                        <th>
-                          CREATE_DATE
-                        </th>
-                        <th>
-                          TRXN_ID
-                        </th>
                       </thead>
                       <tbody>
 					  
 <?php 
 include 'provider.php';
-$get_data = callAPI('GET', 'http://localhost:8080/admin/viewTransactionById/'.$_GET['id'],false,$_SESSION["token"]);
+$get_data = callAPI('GET', 'http://localhost:8080/admin/getAllRefunds',false,$_SESSION["token"]);
 $response = json_decode($get_data);
-$item = $response->{'data'}[0];
+
+$data = $response->{'data'}[0];
+
+foreach ($data as $item) {
 ?>
                         <tr>
                           <td>
-                            <?php echo $item->{'order_id'} ?>
+                            <?php echo $item->{'bookingId'} ?><br>
+							<a href="dashboard?tab=updateBooking&from=refund&id=<?php echo $item->{'bookingId'} ?>" class="btn btn-sm btn-primary">SHOW</a>
                           </td>
 						  <td>
-                             <?php echo $item->{'totalAmount'} ?>
+                             <?php echo $item->{'refundId'} ?>
                           </td>
-						  <td>
-                             <?php echo $item->{'paidAmount'} ?>
-                          </td>
-						  <td>
-                             <?php echo $item->{'discountType'} ?>
-                          </td>
-						  <td>
-                             <?php echo $item->{'payment_mode'} ?>
-                          </td>
-						  
-				
-				
 						  <td>
                              <?php echo $item->{'paymentId'} ?>
                           </td>
 						  <td>
-                              <?php echo substr($item->{'create_dt'},0,19) ?>
+                             <?php echo $item->{'status'} ?>
                           </td>
 						  <td>
-                            <?php echo $item->{'transaction_id'} ?>
+                             <?php echo $item->{'totalAmount'} ?>
                           </td>
-						  
-                        </tr>
+						   
+						  <td>
+                             <?php echo $item->{'refundAmount'} ?>
+                          </td>
+						  <td>
+                             <?php echo $item->{'createdAt'} ?>
+                          </td>
+						  </tr>
+                 <?php }?>
                       </tbody>
                     </table>
                   </div>
@@ -99,7 +93,7 @@ $item = $response->{'data'}[0];
 $(document).ready(function() {
     var table = $('#example').removeAttr('width').DataTable( {
         columnDefs: [
-            { width: 200, targets: 0 },
+            { width: 500, targets: 0 },
 			{"className": "dt-center", "targets": "_all"}
         ],
 		

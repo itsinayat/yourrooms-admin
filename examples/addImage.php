@@ -7,12 +7,12 @@ if(!isset($_SESSION["token"])){
 <?php
 include "provider.php";
 $file =$_FILES["fileToUpload"];
-$hotelId =  $_POST["hotelId"];
+$id =  $_POST["id"];
 $flag =  $_POST["flag"];
 
 
 $data = array(
-    'id' => $hotelId,
+    'id' => $id,
     'files' => curl_file_create($file['tmp_name'], $file['type'], $file['name']),
 	'flag' => $flag
 );

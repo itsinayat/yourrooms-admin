@@ -1,7 +1,4 @@
-<?php 
-if(!isset($_SESSION["token"])){
-	header('Location: login');
-} ?>
+
 <?php
  function callAPI($method, $url, $data,$token){
    $curl = curl_init();

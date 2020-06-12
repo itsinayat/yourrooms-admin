@@ -4,13 +4,8 @@ if(!isset($_SESSION["token"])){
 	header('Location: login');
 } ?>
 <?php
-
 include "provider.php";
-//$bookingStatus =  $_POST["bookingStatus"];
-$checkinStatus =  $_POST["checkinStatus"];
-$checkoutStatus =  $_POST["checkoutStatus"];
-//$paymentStatus =  $_POST["paymentStatus"];
-$id =  $_POST["id"];
+$id =  $_GET["id"];
 
 $body = "{ \"id\":".$id.",
  \"bookingStatus\":\"".$bookingStatus."\",

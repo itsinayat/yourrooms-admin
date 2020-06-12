@@ -40,22 +40,23 @@ $item = $response->{'data'}[0];
                       <div class="col-md-2">
                         <div class="fg">
                           <label class="label">BOOKING STATUS</label>
-                          <input name="bookingStatus" value="<?php echo $item->{'bookingStatus'} ?>" type="text" class="form-control">
+                          <input name="bookingStatus" value="<?php echo $item->{'bookingStatus'} ?>" type="text" class="form-control" disabled>
                         </div>
                       </div>
                       <div class="col-md-2">
                         <div class="fg">
                           <label class="label">PAYMENT STATUS</label>
-                          <input name="paymentStatus" value="<?php echo $item->{'paymentStatus'} ?>" type="text" class="form-control" >
+                          <input name="paymentStatus" value="<?php echo $item->{'paymentStatus'} ?>" type="text" class="form-control" disabled>
                         </div>
                       </div>
-                   
+                  
                       <div class="col-md-2">
                         <div class="fg">
                           <label class="label">CHEKIN STATUS</label>
                           <input name="checkinStatus" value="<?php echo $item->{'checkinStatus'} ?>" type="text" class="form-control" >
                         </div>
                       </div>
+					  
                       <div class="col-md-2">
                         <div class="fg">
                           <label class="label">CHECKOUT STATUS</label>
@@ -64,7 +65,8 @@ $item = $response->{'data'}[0];
                       </div>
                
                       </div>
-                   
+					  <a href="cancelBooking.php?id=<?php echo $item->{'id'} ?>" class="btn  btn-danger pull-left">CANCEL BOOKING</a>
+					<a href="initiateRefund.php?id=<?php echo $item->{'id'} ?>" class="btn  btn-warning pull-left">INITIATE REFUND</a>
                     <button type="submit" class="btn btn-primary pull-right">Update Booking</button>
                     <div class="clearfix"></div>
                   </form>

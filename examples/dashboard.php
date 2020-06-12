@@ -105,6 +105,12 @@ The above copyright notice and this permission notice shall be included in all c
               <p>Manage Users</p>
             </a>
           </li>
+		   <li id="refund" class="nav-item ">
+            <a class="nav-link" href="./dashboard?tab=refund">
+              <i class="material-icons">library_books</i>
+              <p>Manage refund</p>
+            </a>
+          </li>
         <!--  <li class="nav-item ">
             <a class="nav-link" href="./typography.html">
               <i class="material-icons">library_books</i>
@@ -183,6 +189,9 @@ The above copyright notice and this permission notice shall be included in all c
 		}
 		else if($_GET['tab']=='updateBooking'){
 			include "updateBooking.php";
+		}
+		else if($_GET['tab']=='refund'){
+			include "refund.php";
 		}
 		}else{
 			include "main.php";
@@ -265,6 +274,11 @@ navlink.className += " active";
 
 if(tab=='users'){
 var navlink = document.getElementById("users");
+navlink.className += " active";
+}
+
+if(tab=='refund'){
+var navlink = document.getElementById("refund");
 navlink.className += " active";
 }
  

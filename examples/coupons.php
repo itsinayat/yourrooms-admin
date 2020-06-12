@@ -14,7 +14,7 @@ if(!isset($_SESSION["token"])){
 <body>
 <div class="card">
 <div class="card-header card-header-primary">
-    <h4 class="card-title ">ALL BOOKINGS</h4>
+    <h4 class="card-title ">ALL COUPONS</h4>
 </div>
 
 <div class="card-body">

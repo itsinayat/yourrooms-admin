@@ -108,6 +108,12 @@ The above copyright notice and this permission notice shall be included in all c
               <p>Manage refund</p>
             </a>
           </li>
+		   <li id="configure" class="nav-item ">
+            <a class="nav-link" href="./index?tab=configure">
+              <i class="material-icons">unarchive</i>
+              <p>Configure</p>
+            </a>
+          </li>
         
         </ul>
       </div>
@@ -160,6 +166,9 @@ The above copyright notice and this permission notice shall be included in all c
 		}
 		else if($_GET['tab']=='refund'){
 			include "refund.php";
+		}
+		else if($_GET['tab']=='configure'){
+			include "configure.php";
 		}
 		}else{
 			include "main.php";
@@ -247,6 +256,10 @@ navlink.className += " active";
 
 if(tab=='refund'){
 var navlink = document.getElementById("refund");
+navlink.className += " active";
+}
+if(tab=='configure'){
+var navlink = document.getElementById("configure");
 navlink.className += " active";
 }
  

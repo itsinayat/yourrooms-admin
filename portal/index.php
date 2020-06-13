@@ -65,45 +65,45 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="dashboard" class="simple-text logo-normal">
+      <div class="logo"><a href="index" class="simple-text logo-normal">
           <button class="btn btn-lg btn-primary">Yourrooms Admin</button>
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li id='dashboard' class="nav-item">
-            <a class="nav-link" href="./dashboard?tab=main">
+          <li id='index' class="nav-item">
+            <a class="nav-link" href="./index?tab=main">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
 		  
 		  <li id='bookings' class="nav-item ">
-            <a class="nav-link" href="./dashboard?tab=bookings">
+            <a class="nav-link" href="./index?tab=bookings">
               <i class="material-icons">history</i>
               <p>Manage	 Bookings</p>
             </a>
           </li>
           <li id='hotels' class="nav-item ">
-            <a class="nav-link" href="./dashboard?tab=hotels">
+            <a class="nav-link" href="./index?tab=hotels">
               <i class="material-icons">business</i>
               <p>Manage Hotels</p>
             </a>
           </li>
           <li id="coupons" class="nav-item ">
-            <a class="nav-link" href="./dashboard?tab=coupons">
+            <a class="nav-link" href="./index?tab=coupons">
               <i class="material-icons">content_paste</i>
               <p>Manage Coupons</p>
             </a>
           </li>
 		  
 		   <li id="users" class="nav-item ">
-            <a class="nav-link" href="./dashboard?tab=users">
+            <a class="nav-link" href="./index?tab=users">
               <i class="material-icons">account_box</i>
               <p>Manage Users</p>
             </a>
           </li>
 		   <li id="refund" class="nav-item ">
-            <a class="nav-link" href="./dashboard?tab=refund">
+            <a class="nav-link" href="./index?tab=refund">
               <i class="material-icons">library_books</i>
               <p>Manage refund</p>
             </a>
@@ -223,7 +223,7 @@ var urlParams = new URLSearchParams(window.location.search);
 var tab = urlParams.get('tab');
 var act;
 if(tab=='main' || tab==null){
-var navlink = document.getElementById("dashboard");
+var navlink = document.getElementById("index");
 navlink.className += " active";
 }
 if(tab=='bookings'){

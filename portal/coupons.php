@@ -55,7 +55,7 @@ foreach ($data as $item) {
 ?>
                         <tr>
 						 <td>
-                            <a href ="dashboard.php?tab=update_coupon&id=<?php echo $item->{'id'} ?>" >UPDATE</a>
+                            <a href ="index.php?tab=update_coupon&id=<?php echo $item->{'id'} ?>" >UPDATE</a>
                           </td>
 						  <td>
                             <a href ="deleteCouponService.php?id=<?php echo $item->{'id'} ?>" >DELETE</a>
@@ -112,20 +112,20 @@ $(document).ready(function() {
          <form action="updateCouponService.php" method="POST">
     <div class="form-group">
       <label for="code">Code:</label>
-      <input type="text" class="form-control" id="code" placeholder="Enter Code" name="code">
+      <input required type="text" class="form-control" id="code" placeholder="Enter Code" name="code">
     </div>
     <div class="form-group">
       <label for="value">value:</label>
-      <input type="text" class="form-control" id="value" placeholder="Enter Value" name="value">
+      <input required type="text" class="form-control" id="value" placeholder="Enter Value" name="value">
     </div>
 	<div class="form-group">
       <label for="expiry">Expiry(yyyy-mm-dd):</label>
-      <input type="text" class="form-control" id="expiry" placeholder="Enter expiry" name="expiry">
+      <input required type="text" class="form-control" id="expiry" placeholder="Enter expiry" name="expiry">
     </div>
 	
 	<div class="form-group">
       <label for="expiry">enabled(true/false):</label>
-      <input type="text" class="form-control" id="enabled" placeholder="true/false" name="enabled">
+      <input required type="text" class="form-control" id="enabled" placeholder="true/false" name="enabled">
     </div>
     <button type="submit" class="btn btn-default btn-info">Submit</button>
   </form>

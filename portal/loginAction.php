@@ -20,7 +20,7 @@ if($response->{'statusCode'}==401){
 		$token =  $response->{'data'}[0]->{'tokenKey'};
 		session_start();
 		$_SESSION["token"] = $token ;
-		header('Location: dashboard.php');
+		header('Location: index.php');
 	}
 }
 ?>

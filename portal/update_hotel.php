@@ -158,7 +158,7 @@ $item = $response->{'data'}[0];
 							<?php
 								$ST =$item->{'staffs'};
 								foreach ($ST as $s) {
-									echo "<a class='btn btn-info btn-sm' href ='dashboard.php?tab=user&id=".$s->{'id'}."'>VIEW STAFF(".$s->{'id'}.")</a><a href='removeStaff.php?staffId=".$s->{'id'}."&hotelId=".$_GET['id']."'  class='btn btn-sm btn-danger'>REMOVE</a><br>";
+									echo "<a class='btn btn-info btn-sm' href ='index?tab=user&id=".$s->{'id'}."'>VIEW STAFF(".$s->{'id'}.")</a><a href='removeStaff.php?staffId=".$s->{'id'}."&hotelId=".$_GET['id']."'  class='btn btn-sm btn-danger'>REMOVE</a><br>";
 								}	  
 							  ?>
                       </div>
@@ -204,7 +204,7 @@ $item = $response->{'data'}[0];
 </div>
 
 <div class="card-body">
-	  <a href="dashboard.php?tab=addRooms&hotelId=<?php echo $_GET['id']; ?>" class='btn btn-danger'>ADD ROOMS TO HOTEL</a> 
+	  <a href="index?tab=addRooms&hotelId=<?php echo $_GET['id']; ?>" class='btn btn-danger'>ADD ROOMS TO HOTEL</a> 
               
    <div class="table-responsive">
         <table id="example" class="table .table-bordered display" style="width:100%">
@@ -308,7 +308,7 @@ foreach ($data1 as $item) {
                              <?php echo $item->{'update_dt'} ?>
                           </td>
 						  <td>
-						  <a href="dashboard?tab=updateRoom&hotelId=<?php echo $_GET['id'] ?>&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary" >VIEW</a>
+						  <a href="index?tab=updateRoom&hotelId=<?php echo $_GET['id'] ?>&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary" >VIEW</a>
 						  </td>
 
 						  

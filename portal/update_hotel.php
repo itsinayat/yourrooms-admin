@@ -318,15 +318,86 @@ foreach ($data1 as $item) {
                  <?php }?>
                       </tbody>
                     </table>
-					<!-- image start-->
-					<!-- image end-->
+					
                   </div>
 				    </div>
               </div>
 		  
 		  <!---room end --->
 		  
+
+		 <!----- Review start-->
+		  <div class="card">
+<div class="card-header card-header-primary">
+<h4 class="card-title ">REVIEWS</h4>
+</div>
+
+<div class="card-body">
+	
+   <div class="table-responsive">
+   <div class="table-responsive">
+        <table id="example" class="table .table-bordered display" style="width:100%">
+            <thead class="text-primary">
+						<th>ID
+                        </th>
+						<th>COMMENT
+                        </th>
+						<th>RATING
+                        </th>
+                        <th>
+                          REVIEWED ON
+                        </th>
+                        <th>
+                         UPDATED ON
+                        </th>
+						 <th>
+                         REVIEWED BY
+                        </th>
+						<th>
+                          DELETED?
+                        </th>
+                      </thead>
+                      <tbody>
+					  <?php $xx = $response->{'data'}[0]->{'reviewAndRating'};
+					  foreach($xx as $review){ ?>
+                        <tr>
+						 <td>
+                            <?php echo $review->{'id'} ?>
+                          </td>
+						  <td>
+                            <?php echo $review->{'comment'} ?>
+                          </td>
+                          <td>
+                           <?php echo $review->{'rating'} ?>
+                          </td>
+						  <td>
+                             <?php echo $review->{'create_dt'} ?>
+                          </td>
+						  <td>
+                             <?php echo $review->{'update_dt'} ?>
+                          </td>
+						  <td>
+                            <a href="index?tab=user&id=<?php echo $review->{'create_user_id'} ?>">View</a>
+                          </td>
+						  <td>
+                            <?php echo $review->{'del_ind'}? 'true': 'false' ?>
+                          </td>
+						 
+						  
+						  
+                        </tr>
+            <?php } ?>
+                      </tbody>
+                    </table>
+					<!-- image start-->
+					<!-- image end-->
+                  </div>
+				    </div>
+              </div>
 		  
+
+		 <!-- review end -->
+		 
 		  
 		  
 		  

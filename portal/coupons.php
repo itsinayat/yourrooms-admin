@@ -127,12 +127,10 @@ $(document).ready(function() {
       <label for="expiry">enabled(true/false):</label>
       <input required type="text" class="form-control" id="enabled" placeholder="true/false" name="enabled">
     </div>
-    <button type="submit" class="btn btn-default btn-info">Submit</button>
+    <button type="submit" class="btn btn-info">Submit</button>
   </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+     
     </div>
 
   </div>

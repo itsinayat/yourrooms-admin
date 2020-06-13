@@ -206,12 +206,10 @@ $(document).ready(function() {
       <label for="expiry">IS BLOCKED?(true/false):</label>
       <input required type="text" class="form-control"  placeholder="true/false" name="isBlocked">
     </div>
-    <button type="submit" class="btn btn-default btn-info">Submit</button>
+    <button type="submit" class="btn btn-info btn-info">Submit</button>
   </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+     
     </div>
 
   </div>

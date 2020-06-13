@@ -207,6 +207,7 @@ $item = $response->{'data'}[0];
 	  <a href="index?tab=addRooms&hotelId=<?php echo $_GET['id']; ?>" class='btn btn-danger'>ADD ROOMS TO HOTEL</a> 
               
    <div class="table-responsive">
+   <div class="table-responsive">
         <table id="example" class="table .table-bordered display" style="width:100%">
             <thead class="text-primary">
 						<th>ID
@@ -356,7 +357,7 @@ $userslist = $users->{'data'}[0];
 			</select>
 			<input type="hidden" value="<?php echo $_GET['id'] ?>" name = "hotelId">
           </div>
-		  <input type="submit" value="Add Now">
+		  <input class="btn btn-primary" type="submit" value="Add Now">
         </form>
 		</div>
     </div>
@@ -373,7 +374,7 @@ $userslist = $users->{'data'}[0];
   <input type="file" name="fileToUpload" id="fileToUpload">
    <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
     <input type="hidden" name="flag" value="hotel">
-  <input type="submit" value="Upload Image" name="submit">
+  <input class="btn btn-primary" type="submit" value="Upload Image" name="submit">
 </form>
 		</div>
     </div>

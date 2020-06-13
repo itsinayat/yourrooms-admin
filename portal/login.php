@@ -17,16 +17,16 @@ if(isset($_SESSION["token"])){
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
     body {
-        color: #999;
+        color: #9c27b0;
 		background: #f5f5f5;
 		font-family: 'Varela Round', sans-serif;
 	}
 	.form-control {
 		box-shadow: none;
-		border-color: #ddd;
+		border-color: #9c27b0;
 	}
 	.form-control:focus {
-		border-color: #4aba70; 
+		border-color: #9c27b0; 
 	}
 	.login-form {
         width: 350px;
@@ -34,7 +34,7 @@ if(isset($_SESSION["token"])){
 		padding: 30px 0;
 	}
     .login-form form {
-        color: #434343;
+        color: #9c27b0;
 		border-radius: 1px;
     	margin-bottom: 15px;
         background: #fff;
@@ -48,14 +48,14 @@ if(isset($_SESSION["token"])){
         margin-bottom: 20px;
 	}
     .login-form .avatar {
-        color: #fff;
+        color: white;
 		margin: 0 auto 30px;
         text-align: center;
 		width: 100px;
 		height: 100px;
 		border-radius: 50%;
 		z-index: 9;
-		background: #4aba70;
+		background: #9c27b0;
 		padding: 15px;
 		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 	}
@@ -76,12 +76,12 @@ if(isset($_SESSION["token"])){
 		right: 15px;
 	}
 	.login-form .btn {
-		background: #4aba70;
+		background: #9c27b0;
 		border: none;
 		line-height: normal;
 	}
 	.login-form .btn:hover, .login-form .btn:focus {
-		background: #42ae68;
+		background: #4aba70;
 	}
     .login-form .checkbox-inline {
         float: left;
@@ -96,7 +96,7 @@ if(isset($_SESSION["token"])){
         font-size: 13px;
     }
     .login-form a {
-        color: #4aba70;
+        color: #9c27b0;
     }
 </style>
 </head>
@@ -104,7 +104,7 @@ if(isset($_SESSION["token"])){
 <div class="login-form" style="margin-top:1in">  
 <div id="app">
 <?php if (isset($_COOKIE['loginError'])){
-	echo "<center><h3 style='color:red'>".$_COOKIE['loginError']."</h3></center>";
+	echo "<center><h3 style='color:#9c27b0'>".$_COOKIE['loginError']."</h3></center>";
 } ?>
     <form method="post" action="loginAction.php">
 		<div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
@@ -116,7 +116,7 @@ if(isset($_SESSION["token"])){
             <input name="password"  type="password" class="form-control" placeholder="Password" required="required">
         </div>
         
-		<button class="btn btn-primary btn-block btn-lg" v-on:click="login" type="submit" class="btn btn-primary">LOGIN</button>             
+		<button class="btn btn-info btn-block btn-lg" type="submit">LOGIN</button>             
     </form>			
 </div> 
 </div>

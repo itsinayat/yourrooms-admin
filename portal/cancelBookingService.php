@@ -1,3 +1,4 @@
+<?php include "config.php"; ?>
 <?php 
 session_start();
 if(!isset($_SESSION["token"])){
@@ -9,7 +10,7 @@ $id =  $_GET["id"];
 
 $body = "{ \"id\":".$id."}";
 
-$get_data = callAPI('POST', 'http://localhost:8080/hotel/cancelBooking',$body,$_SESSION["token"]);
+$get_data = callAPI('POST', $baseurl.'/hotel/cancelBooking',$body,$_SESSION["token"]);
 
 $response = json_decode($get_data);
 if($response->{'statusCode'} == "200"){

@@ -1,4 +1,5 @@
-<?php 
+<?php include "config.php"; ?>
+ <?php 
 session_start();
 if(!isset($_SESSION["token"])){
 	header('Location: login');
@@ -49,7 +50,7 @@ $body = "{ \"hotelName\":\"".$name."\",
  \"ac\":".$ac." }";
 }
 
-$get_data = callAPI('POST', 'http://localhost:8080/admin/add-or-update-hotel',$body,$_SESSION["token"]);
+$get_data = callAPI('POST', $baseurl.'/admin/add-or-update-hotel',$body,$_SESSION["token"]);
 
 $response = json_decode($get_data);
 if($response->{'message'} == "SUCCESS"){

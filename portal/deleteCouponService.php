@@ -1,3 +1,4 @@
+<?php include "config.php"; ?>
 <?php 
 session_start();
 if(!isset($_SESSION["token"])){
@@ -7,7 +8,7 @@ if(!isset($_SESSION["token"])){
 
 include "provider.php";
 $id =  $_GET["id"];
-$get_data = callAPI('GET', 'http://localhost:8080/admin/deleteCoupon/'.$id.'',false,$_SESSION["token"]);
+$get_data = callAPI('GET', $baseurl.'/admin/deleteCoupon/'.$id.'',false,$_SESSION["token"]);
 
 $response = json_decode($get_data);
 if($response->{'message'} == "SUCCESS"){

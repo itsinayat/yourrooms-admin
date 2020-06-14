@@ -1,12 +1,11 @@
-
-
+<?php include "config.php"; ?>
 <?php
 include "provider.php";
 $username = $_POST['username'];  
 $password =  $_POST["password"];
 $body = "{ \"username\":\"".$username."\", \"password\" :\"".$password."\"}";
-echo $body;
-$get_data = callAPI('POST', 'http://localhost:8080/user/login',$body,null);
+echo $baseurl.'/user/login';
+$get_data = callAPI('POST', $baseurl.'/user/login',$body,null);
 $response = json_decode($get_data);
 print_r($get_data);
 if($response->{'statusCode'}==401){

@@ -1,7 +1,8 @@
+<?php include "config.php" ?>
 <?php 
 session_start();
 if(isset($_SESSION["token"])){
-	header('Location: index');
+	header('Location: index.php');
 } ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,5 @@
-<?php 
+<?php include "config.php"; ?>
+ <?php 
 if(!isset($_SESSION["token"])){
 	header('Location: login');
 } ?>
@@ -75,7 +76,7 @@ if(!isset($_SESSION["token"])){
 					  
 <?php 
 include 'provider.php';
-$get_data = callAPI('GET', 'http://localhost:8080/admin/getAllUsers',false,$_SESSION["token"]);
+$get_data = callAPI('GET', $baseurl.'/admin/getAllUsers',false,$_SESSION["token"]);
 $response = json_decode($get_data);
 
 $data = $response->{'data'}[0];

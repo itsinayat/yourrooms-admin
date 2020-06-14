@@ -1,4 +1,5 @@
-<?php 
+<?php include "config.php"; ?>
+ <?php 
 session_start();
 if(!isset($_SESSION["token"])){
 	header('Location: login');
@@ -11,7 +12,7 @@ $StaffId =  $_GET["staffId"];
 
 $body = "{ \"hotelId\":\"".$HotelId."\", \"staff\" :[".$StaffId."]}";
 echo $body;
-$get_data = callAPI('POST', 'http://localhost:8080/admin/remove-staff-from-hotel',$body,$_SESSION["token"]);
+$get_data = callAPI('POST', $baseurl.'/admin/remove-staff-from-hotel',$body,$_SESSION["token"]);
 
 $response = json_decode($get_data);
 if($response->{'message'} == "SUCCESS"){

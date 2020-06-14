@@ -1,10 +1,11 @@
-<?php 
+<?php include "config.php"; ?>
+ <?php 
 if(!isset($_SESSION["token"])){
 	header('Location: login');
 } ?>
 <?php 
 include 'provider.php';
-$get_data = callAPI('GET', 'http://localhost:8080/hotel/getRoom?id='.$_GET['id'],false,$_SESSION["token"]);
+$get_data = callAPI('GET', $baseurl.'/hotel/getRoom?id='.$_GET['id'],false,$_SESSION["token"]);
 $response = json_decode($get_data);
 $item = $response->{'data'}[0];
 ?>
@@ -143,14 +144,14 @@ $item = $response->{'data'}[0];
                          <?php
 								$IM =$item->{'roomImages'};
 								foreach ($IM as $i) {
-									echo "<img width='20px' src ='http://localhost:8080/".$i->{'url'}."'>&nbsp;&nbsp;&nbsp;<button class='btn btn-info btn-sm' type='button' data-toggle='modal' data-target='#exampleModal".$i->{'id'}."'>VIEW</button>&nbsp;&nbsp;&nbsp;<a href='deleteImage.php?&type=room&id=".$i->{'id'}."'  class='btn btn-sm btn-danger'>DELETE</a><br>";
+									echo "<img width='20px' src ='".$baseurl."/".$i->{'url'}."'>&nbsp;&nbsp;&nbsp;<button class='btn btn-info btn-sm' type='button' data-toggle='modal' data-target='#exampleModal".$i->{'id'}."'>VIEW</button>&nbsp;&nbsp;&nbsp;<a href='deleteImage.php?&type=room&id=".$i->{'id'}."'  class='btn btn-sm btn-danger'>DELETE</a><br>";
 								?>
 								<div class="modal fade" id="exampleModal<?php echo $i->{'id'} ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
      
       
-       <center><?php echo "<img width='500px' src ='http://localhost:8080/".$i->{'url'}."'>"; ?></center>
+       <center><?php echo "<img width='500px' src ='".$baseurl."/".$i->{'url'}."'>"; ?></center>
 
      
     </div>
@@ -185,7 +186,7 @@ $item = $response->{'data'}[0];
 
 <div class="modal fade" id="addStaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <?php 
-$usersobj = callAPI('GET', 'http://localhost:8080/admin/getAllUsers',false,$_SESSION["token"]);
+$usersobj = callAPI('GET', $baseurl.'/admin/getAllUsers',false,$_SESSION["token"]);
 $users = json_decode($usersobj);
 $userslist = $users->{'data'}[0];
 ?>

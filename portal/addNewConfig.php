@@ -1,3 +1,4 @@
+<?php include "config.php"; ?>
 <?php 
 session_start();
 if(!isset($_SESSION["token"])){
@@ -14,7 +15,7 @@ $value =  $_POST["value"];
 $body = "{ \"key\":\"".$key."\",
  \"value\":\"".$value."\"}";
 
-$get_data = callAPI('POST', 'http://localhost:8080/admin/addNewConfig',$body,$_SESSION["token"]);
+$get_data = callAPI('POST', $baseurl.'/admin/addNewConfig',$body,$_SESSION["token"]);
 $response = json_decode($get_data);
 if($response->{'message'} == "SUCCESS"){
 header('Location: ' . $_SERVER['HTTP_REFERER']);	

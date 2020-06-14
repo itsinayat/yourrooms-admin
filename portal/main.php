@@ -1,3 +1,4 @@
+<?php include "config.php"; ?>
 <?php 
 if(!isset($_SESSION["token"])){
 	header('Location: login');
@@ -5,16 +6,16 @@ if(!isset($_SESSION["token"])){
 <?php 
 include 'provider.php';
 //users count
-$get_data = callAPI('GET', 'http://localhost:8080/admin/getAllUsers',false,$_SESSION["token"]);
+$get_data = callAPI('GET', $baseurl.'/admin/getAllUsers',false,$_SESSION["token"]);
 $userCount = sizeof(json_decode($get_data)->{'data'}[0]);
 //hotel count
-$get_data_hotel = callAPI('GET', 'http://localhost:8080/hotel/getAll-hotels',false,$_SESSION["token"]);
+$get_data_hotel = callAPI('GET', $baseurl.'/hotel/getAll-hotels',false,$_SESSION["token"]);
 $hotelCount = sizeof(json_decode($get_data_hotel)->{'data'}[0]);
 //all bookings
-$get_data_bkng = callAPI('GET', 'http://localhost:8080/admin/getAllBookings',false,$_SESSION["token"]);
+$get_data_bkng = callAPI('GET', $baseurl.'/admin/getAllBookings',false,$_SESSION["token"]);
 $bookingCount = sizeof(json_decode($get_data_bkng)->{'data'}[0]);
 //getRevenue
-$get_data_revenue = callAPI('GET', 'http://localhost:8080/admin/getRevenue',false,$_SESSION["token"]);
+$get_data_revenue = callAPI('GET', $baseurl.'/admin/getRevenue',false,$_SESSION["token"]);
 $revenue = json_decode($get_data_revenue)->{'data'}[0];
 ?>
 <div class="content">

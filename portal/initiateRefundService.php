@@ -1,3 +1,4 @@
+<?php include "config.php"; ?>
 <?php 
 session_start();
 if(!isset($_SESSION["token"])){
@@ -11,7 +12,7 @@ $refundAmount =  $_POST["refundAmount"];
 
 $body = "{ \"bookingId\":".$bookingId.",\"refundAmount\":".$refundAmount."}";
 
-$get_data = callAPI('POST', 'http://localhost:8080/payment/initiateRefund',$body,$_SESSION["token"]);
+$get_data = callAPI('POST', $baseurl.'/payment/initiateRefund',$body,$_SESSION["token"]);
 
 $response = json_decode($get_data);
 if($response->{'statusCode'} == "200"){

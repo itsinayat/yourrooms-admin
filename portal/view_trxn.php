@@ -1,4 +1,5 @@
-<?php 
+<?php include "config.php"; ?>
+ <?php 
 if(!isset($_SESSION["token"])){
 	header('Location: login');
 } ?>
@@ -52,7 +53,7 @@ if(!isset($_SESSION["token"])){
 					  
 <?php 
 include 'provider.php';
-$get_data = callAPI('GET', 'http://localhost:8080/admin/viewTransactionById/'.$_GET['id'],false,$_SESSION["token"]);
+$get_data = callAPI('GET', $baseurl.'/admin/viewTransactionById/'.$_GET['id'],false,$_SESSION["token"]);
 $response = json_decode($get_data);
 $item = $response->{'data'}[0];
 ?>

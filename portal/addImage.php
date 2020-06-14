@@ -1,5 +1,6 @@
-
+<?php include "config.php"; ?>
 <?php 
+
 session_start();
 if(!isset($_SESSION["token"])){
 	header('Location: login');
@@ -17,7 +18,7 @@ $data = array(
 	'flag' => $flag
 );
 
-$get_data = uploadFile('http://localhost:8080/admin/uploadMultipleFiles',$data,$_SESSION["token"]);
+$get_data = uploadFile($baseurl.'/admin/uploadMultipleFiles',$data,$_SESSION["token"]);
 header('Location: ' . $_SERVER['HTTP_REFERER']);	
 
 ?>

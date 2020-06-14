@@ -14,12 +14,12 @@ if(!isset($_SESSION["token"])){
 
 </head> 
 <body>
-
+<?php include "config.php"; ?>
 <div class="row">
 
 <?php 
 include 'provider.php';
-$get_data = callAPI('GET', 'http://localhost:8080/admin/getAllConfiguration',false,$_SESSION["token"]);
+$get_data = callAPI('GET', $baseurl.'/admin/getAllConfiguration',false,$_SESSION["token"]);
 $response = json_decode($get_data);
 $data = $response->{'data'}[0];
 foreach($data as $item){

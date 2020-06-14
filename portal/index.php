@@ -2,7 +2,7 @@
 <?php 
 session_start();
 if(!isset($_SESSION["token"])){
-	header('Location: login');
+	header('Location: login.php');
 } ?>
 <!--
 =========================================================
@@ -66,51 +66,51 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="index" class="simple-text logo-normal">
+      <div class="logo"><a href="index.php" class="simple-text logo-normal">
           <button class="btn btn-lg btn-primary">Yourrooms Admin</button>
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li id='index' class="nav-item">
-            <a class="nav-link" href="./index?tab=main">
+            <a class="nav-link" href="./index.php?tab=main">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
 		  
 		  <li id='bookings' class="nav-item ">
-            <a class="nav-link" href="./index?tab=bookings">
+            <a class="nav-link" href="./index.php?tab=bookings">
               <i class="material-icons">history</i>
               <p>Manage	 Bookings</p>
             </a>
           </li>
           <li id='hotels' class="nav-item ">
-            <a class="nav-link" href="./index?tab=hotels">
+            <a class="nav-link" href="./index.php?tab=hotels">
               <i class="material-icons">business</i>
               <p>Manage Hotels</p>
             </a>
           </li>
           <li id="coupons" class="nav-item ">
-            <a class="nav-link" href="./index?tab=coupons">
+            <a class="nav-link" href="./index.php?tab=coupons">
               <i class="material-icons">content_paste</i>
               <p>Manage Coupons</p>
             </a>
           </li>
 		  
 		   <li id="users" class="nav-item ">
-            <a class="nav-link" href="./index?tab=users">
+            <a class="nav-link" href="./index.php?tab=users">
               <i class="material-icons">account_box</i>
               <p>Manage Users</p>
             </a>
           </li>
 		   <li id="refund" class="nav-item ">
-            <a class="nav-link" href="./index?tab=refund">
+            <a class="nav-link" href="./index.php?tab=refund">
               <i class="material-icons">library_books</i>
               <p>Manage refund</p>
             </a>
           </li>
 		   <li id="configure" class="nav-item ">
-            <a class="nav-link" href="./index?tab=configure">
+            <a class="nav-link" href="./index.php?tab=configure">
               <i class="material-icons">unarchive</i>
               <p>Configure</p>
             </a>

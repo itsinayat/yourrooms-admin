@@ -205,7 +205,7 @@ $item = $response->{'data'}[0];
 </div>
 
 <div class="card-body">
-	  <a href="index?tab=addRooms&hotelId=<?php echo $_GET['id']; ?>" class='btn btn-danger'>ADD ROOMS TO HOTEL</a> 
+	  <a href="index.php?tab=addRooms&hotelId=<?php echo $_GET['id']; ?>" class='btn btn-danger'>ADD ROOMS TO HOTEL</a> 
               
    <div class="table-responsive">
    <div class="table-responsive">
@@ -310,7 +310,7 @@ foreach ($data1 as $item) {
                              <?php echo $item->{'update_dt'} ?>
                           </td>
 						  <td>
-						  <a href="index?tab=updateRoom&hotelId=<?php echo $_GET['id'] ?>&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary" >VIEW</a>
+						  <a href="index.php?tab=updateRoom&hotelId=<?php echo $_GET['id'] ?>&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary" >VIEW</a>
 						  </td>
 
 						  
@@ -378,7 +378,7 @@ foreach ($data1 as $item) {
                              <?php echo $review->{'update_dt'} ?>
                           </td>
 						  <td>
-                            <a href="index?tab=user&id=<?php echo $review->{'create_user_id'} ?>">View</a>
+                            <a href="index.php?tab=user&id=<?php echo $review->{'create_user_id'} ?>">View</a>
                           </td>
 						  <td>
                             <?php echo $review->{'del_ind'}? 'true': 'false' ?>

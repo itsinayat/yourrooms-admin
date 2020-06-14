@@ -86,7 +86,7 @@ foreach ($data as $item) {
                         <tr>
                           <td>
                             <?php echo $item->{'id'} ?><br>
-							<a href="index?tab=user&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary">update</a>
+							<a href="index.php?tab=user&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary">update</a>
                           </td>
 						  <td>
                              <?php echo $item->{'firstName'} ?>
@@ -113,7 +113,7 @@ foreach ($data as $item) {
                              <?php
 if(isset($item->{'referred_by'})){
 ?>
-<a href="index?tab=user&id=<?php echo $item->{'referred_by'} ?>">View</a>
+<a href="index.php?tab=user&id=<?php echo $item->{'referred_by'} ?>">View</a>
 <?php
 }else{
 	echo "NA";

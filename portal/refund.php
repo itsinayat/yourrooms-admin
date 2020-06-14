@@ -58,7 +58,7 @@ foreach ($data as $item) {
                         <tr>
                           <td>
                             <?php echo $item->{'bookingId'} ?><br>
-							<a href="index?tab=updateBooking&from=refund&id=<?php echo $item->{'bookingId'} ?>" class="btn btn-sm btn-primary">SHOW</a>
+							<a href="index.php?tab=updateBooking&from=refund&id=<?php echo $item->{'bookingId'} ?>" class="btn btn-sm btn-primary">SHOW</a>
                           </td>
 						  <td>
                              <?php echo $item->{'refundId'} ?>

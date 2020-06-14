@@ -85,7 +85,7 @@ foreach ($data as $item) {
                         <tr>
                           <td>
                             <?php echo $item->{'id'} ?><br>
-							<a href="index?tab=updateBooking&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary">update</a>
+							<a href="index.php?tab=updateBooking&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary">update</a>
                           </td>
 						  <td>
                              <?php echo $item->{'bookingId'} ?>
@@ -101,7 +101,7 @@ foreach ($data as $item) {
                           </td>
 						   <td>
 						  <?php if($item->{'transaction'} != null){ ?>
-                             <a href="index?tab=view_trxn&id=<?php echo $item->{'transaction'}->{'id'} ?>">View</a>
+                             <a href="index.php?tab=view_trxn&id=<?php echo $item->{'transaction'}->{'id'} ?>">View</a>
 							<?php }else{
 								echo "NA";
 							} ?>
@@ -121,7 +121,7 @@ foreach ($data as $item) {
 						  
 						  <td>
 						  <?php if($item->{'user'}-> {'id'} != null){ ?>
-                             <a href="index?tab=user&id=<?php echo $item->{'user'}-> {'id'} ?>">View</a>
+                             <a href="index.php?tab=user&id=<?php echo $item->{'user'}-> {'id'} ?>">View</a>
 							<?php }else{
 								echo "NA";
 							} ?>

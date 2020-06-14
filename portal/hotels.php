@@ -1,7 +1,7 @@
 <?php include "config.php"; ?>
 <?php 
 if(!isset($_SESSION["token"])){
-	header('Location: login');
+	header('Location: login.php');
 } ?>
 <html>
 <head>
@@ -80,7 +80,7 @@ foreach ($data as $item) {
                         <tr>
                           <td>
                             <?php echo $item->{'id'} ?><br>
-							<a href="index?tab=update_hotel&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary">update/addImage/Staff</a>
+							<a href="index.php?tab=update_hotel&id=<?php echo $item->{'id'} ?>" class="btn btn-sm btn-primary">update/addImage/Staff</a>
                           </td>
 						  <td>
                              <?php echo $item->{'hotelName'} ?>

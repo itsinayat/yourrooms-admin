@@ -337,7 +337,7 @@ foreach ($data1 as $item) {
 	
    <div class="table-responsive">
    <div class="table-responsive">
-        <table id="example" class="table .table-bordered display" style="width:100%">
+        <table id="example2" class="table .table-bordered display" style="width:100%">
             <thead class="text-primary">
 						<th>ID
                         </th>
@@ -357,22 +357,30 @@ foreach ($data1 as $item) {
 						<th>
                           DELETED?
                         </th>
+						<th>
+                          APPROVED?
+                        </th>
+						<th>
+                          UPDATE
+                        </th>
                       </thead>
                       <tbody>
 					  <?php $xx = $response->{'data'}[0]->{'reviewAndRating'};
 					  foreach($xx as $review){ ?>
                         <tr>
+						<form action="updateComment.php" method="POST">
 						 <td>
                             <?php echo $review->{'id'} ?>
+							<input type="hidden" name="id" value="<?php echo $review->{'id'} ?>">
                           </td>
 						  <td>
-                            <?php echo $review->{'comment'} ?>
+                          <input id ="comment"  type="text" name="comment" value="<?php echo $review->{'comment'} ?>">
                           </td>
                           <td>
-                           <?php echo $review->{'rating'} ?>
+                          <?php echo $review->{'rating'} ?>
                           </td>
 						  <td>
-                             <?php echo $review->{'create_dt'} ?>
+                           <?php echo $review->{'create_dt'} ?>
                           </td>
 						  <td>
                              <?php echo $review->{'update_dt'} ?>
@@ -381,11 +389,17 @@ foreach ($data1 as $item) {
                             <a href="index.php?tab=user&id=<?php echo $review->{'create_user_id'} ?>">View</a>
                           </td>
 						  <td>
-                            <?php echo $review->{'del_ind'}? 'true': 'false' ?>
+                            <input id ="deleted"   type="text" name="deleted" value="<?php echo $review->{'del_ind'}? 'true': 'false' ?>">
                           </td>
+						  <td>
+							<input  id ="approved"   type="text" name="approved" value="<?php echo $review->{'approved'}? 'true': 'false' ?>" />
+						  </td>
+						  <td>
+						  <input type="submit" class="btn btn-primary btn-sm" value="update">
+						  </td>
 						 
 						  
-						  
+						  </form>
                         </tr>
             <?php } ?>
                       </tbody>
@@ -455,6 +469,18 @@ $userslist = $users->{'data'}[0];
 <script>
 $(document).ready(function() {
     var table = $('#example').removeAttr('width').DataTable( {
+        columnDefs: [
+            { width: 100, targets: 0 },
+			{"className": "dt-center", "targets": "_all"}
+        ],
+		
+        fixedColumns: true
+    } );
+} );
+
+
+$(document).ready(function() {
+    var table = $('#example2').removeAttr('width').DataTable( {
         columnDefs: [
             { width: 100, targets: 0 },
 			{"className": "dt-center", "targets": "_all"}

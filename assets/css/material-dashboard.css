@@ -19195,7 +19195,7 @@ Copyright (c) 2015 Daniel Eden
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: #282828;
+    background-color: white;
     display: block;
     content: "";
     z-index: 1;

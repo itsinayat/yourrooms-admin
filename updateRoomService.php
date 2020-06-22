@@ -64,7 +64,7 @@ $get_data = callAPI('POST', $baseurl.'/admin/add-or-update-rooms-to-hotel',$body
 
 $response = json_decode($get_data);
 if($response->{'statusCode'} == "432"){
-header('Location: index?tab=update_hotel&id='.$hotelId);	
+header('Location: index.php?tab=update_hotel&id='.$hotelId);	
 }else{
 	print_r($get_data);
 }

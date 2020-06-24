@@ -159,7 +159,7 @@ $item = $response->{'data'}[0];
 							<?php
 								$ST =$item->{'staffs'};
 								foreach ($ST as $s) {
-									echo "<a class='btn btn-info btn-sm' href ='index?tab=user&id=".$s->{'id'}."'>VIEW STAFF(".$s->{'id'}.")</a><a href='removeStaff.php?staffId=".$s->{'id'}."&hotelId=".$_GET['id']."'  class='btn btn-sm btn-danger'>REMOVE</a><br>";
+									echo "<a class='btn btn-info btn-sm' href ='index.php?tab=user&id=".$s->{'id'}."'>VIEW STAFF(".$s->{'id'}.")</a><a href='removeStaff.php?staffId=".$s->{'id'}."&hotelId=".$_GET['id']."'  class='btn btn-sm btn-danger'>REMOVE</a><br>";
 								}	  
 							  ?>
                       </div>
